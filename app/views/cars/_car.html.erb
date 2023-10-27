@@ -1,4 +1,9 @@
 <div id="<%= dom_id car %>">
+  <%= form_with url: cars_path, method: :get do |form| %>
+            <%= form.text_field :query_text, value: params[:query_text]%>
+            <%= form.submit "Buscar"%>
+  <%end%>
+  
   <p>
     <strong>Year production:</strong>
     <%= car.year_production %>
@@ -43,5 +48,9 @@
     <strong>Feature:</strong>
     <%= car.feature_id %>
   </p>
+
+  <div style="display: flex; justify-content: center;">
+    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
 
 </div>

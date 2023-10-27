@@ -1,9 +1,17 @@
 class CarsController < ApplicationController
   before_action :set_car, only: %i[ show edit update destroy ]
+  before_action only: [:create, :edit, :update, :destroy, :new] do
+    authorize_request(["admin"])
+  end
+
 
   # GET /cars or /cars.json
   def index
+    @pagy, @cars = pagy(Car.all)
     @cars = Car.all
+    if params[:query_text].present?
+      @cars = @cars.search_full_text(params[:query_text])
+    end
   end
 
   # GET /cars/1 or /cars/1.json

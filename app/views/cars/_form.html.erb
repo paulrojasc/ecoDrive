@@ -12,48 +12,54 @@
   <% end %>
 
   <div>
-    <%= form.label :year_production, style: "display: block" %>
-    <%= form.date_field :year_production %>
+    <%= form.label :year_production, 'Año de Fabricación', style: "display: block" %>
+    <%= form.date_field :year_production,
+    autofocus: true,
+    required: true %>
   </div>
 
   <div>
-    <%= form.label :driving_range, style: "display: block" %>
-    <%= form.number_field :driving_range %>
+    <%= form.label :driving_range, 'Rango de Conducción', style: "display: block" %>
+    <%= form.number_field :driving_range, 
+    required: true,
+    min: 0 %>
   </div>
 
   <div>
-    <%= form.label :rental_price, style: "display: block" %>
-    <%= form.number_field :rental_price %>
+    <%= form.label :rental_price, 'Precio de Alquiler por Día', style: "display: block" %>
+    <%= form.number_field :rental_price, 
+    required: true,
+    min: 0 %>
   </div>
 
   <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.text_field :image %>
+    <%= form.label :image, 'Imagen',style: "display: block" %>
+    <%= form.file_field :image, accept: "image/*" %>
   </div>
 
   <div>
-    <%= form.label :rented, style: "display: block" %>
-    <%= form.check_box :rented %>
+    <%= form.label :rented, '¿Rentado?',style: "display: block" %>
+    <%= form.select :rented, [['Sí', true], ['No', false]], {}, { include_blank: 'Seleccione...' } %>
   </div>
 
   <div>
     <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.text_field :user_id, value: current_user.id %>
   </div>
 
   <div>
     <%= form.label :modelcar_id, style: "display: block" %>
-    <%= form.text_field :modelcar_id %>
+    <%= form.collection_select :modelcar_id, Modelcar.all, :id, :name, { include_blank: 'Seleccione...' }%>
   </div>
 
   <div>
     <%= form.label :brand_id, style: "display: block" %>
-    <%= form.text_field :brand_id %>
+    <%= form.collection_select :brand_id, Brand.where(available:true), :id, :name %>
   </div>
 
   <div>
     <%= form.label :feature_id, style: "display: block" %>
-    <%= form.text_field :feature_id %>
+    <%= form.collection_check_boxes :feature_id, Feature.where(available:true), :id, :name %>
   </div>
 
   <div>
