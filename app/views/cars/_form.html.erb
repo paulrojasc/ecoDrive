@@ -1,0 +1,62 @@
+<%= form_with(model: car) do |form| %>
+  <% if car.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+        <% car.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :year_production, style: "display: block" %>
+    <%= form.date_field :year_production %>
+  </div>
+
+  <div>
+    <%= form.label :driving_range, style: "display: block" %>
+    <%= form.number_field :driving_range %>
+  </div>
+
+  <div>
+    <%= form.label :rental_price, style: "display: block" %>
+    <%= form.number_field :rental_price %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.text_field :image %>
+  </div>
+
+  <div>
+    <%= form.label :rented, style: "display: block" %>
+    <%= form.check_box :rented %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :modelcar_id, style: "display: block" %>
+    <%= form.text_field :modelcar_id %>
+  </div>
+
+  <div>
+    <%= form.label :brand_id, style: "display: block" %>
+    <%= form.text_field :brand_id %>
+  </div>
+
+  <div>
+    <%= form.label :feature_id, style: "display: block" %>
+    <%= form.text_field :feature_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

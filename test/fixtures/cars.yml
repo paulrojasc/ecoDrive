@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year_production: 2023-10-27
+  driving_range: 1
+  rental_price: 1
+  image: MyString
+  rented: false
+  user: one
+  modelcar: one
+  brand: one
+  feature: one
+
+two:
+  year_production: 2023-10-27
+  driving_range: 1
+  rental_price: 1
+  image: MyString
+  rented: false
+  user: two
+  modelcar: two
+  brand: two
+  feature: two
